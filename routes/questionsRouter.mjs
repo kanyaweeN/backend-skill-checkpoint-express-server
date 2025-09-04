@@ -1,6 +1,7 @@
 import { Router } from "express";
 import connectionPool from "../utils/db.mjs";
-import { validationQuestionsData, validationQuestionsAnswerData } from "../middleware/questionsValidation.mjs";
+import { validationQuestionsData } from "../middleware/questionsValidation.mjs";
+import { validationAnswerData } from "../middleware/answerValidation.mjs";
 
 const questionsRouter = Router();
 
@@ -35,7 +36,7 @@ questionsRouter.post('/', validationQuestionsData, async (req, res) => {
     }
 });
 
-questionsRouter.post('/:questionId/answers', validationQuestionsAnswerData, async (req, res) => {
+questionsRouter.post('/:questionId/answers', validationAnswerData, async (req, res) => {
     try {
         const questionId = req.params.questionId;
         let result;

@@ -27,21 +27,3 @@ export function validationQuestionsData(req, res, next) {
 
     next();
 }
-
-export function validationQuestionsAnswerData(req, res, next) {
-    const body = req.body;
-
-    if (!body || Object.keys(body).length === 0) {
-        return res.status(400).json({
-            message: "Invalid request data.",
-        })
-    }
-
-    if (!body.content) {
-        return res.status(400).json({
-            message: "Content is required.",
-        })
-    }
-
-    next();
-}
